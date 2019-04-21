@@ -1,5 +1,12 @@
-import React, {Component, Fragment} from 'react';
-import styled from 'styled-components';
+import React, {Component} from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+
+createGlobalStyle`
+    body{
+        padding: 50;
+        margin: 50;
+    }
+`;
 
 class App extends Component {
     render() {
@@ -7,6 +14,7 @@ class App extends Component {
             <Container>
                 <Button danger> Hello </Button>
                 <Button> Hello </Button>
+                <Anchor href='http://google.com'>Go to google</Anchor>
             </Container>
         );
     }
@@ -31,6 +39,10 @@ const Button = styled.button`
         outline: none;
     }
     background-color: ${props => (props.danger ? "#c0392b": "#2ecc71" )}
+`;
+
+const Anchor = styled(Button.withComponent("a"))`
+    text-decoration: none;
 `;
 
 export default App;
