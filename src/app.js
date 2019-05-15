@@ -1,11 +1,38 @@
 import React, {Component} from 'react';
-import styled, { createGlobalStyle, css} from 'styled-components';
+import styled, { createGlobalStyle, css, ThemeProvider} from 'styled-components';
+import theme from "./theme.js";
+
+const Form = () => (
+    <Card>
+        <Button>
+            Hello
+        </Button>
+    </Card>);
+
+class App extends Component {
+    render() {
+        return (
+            <ThemeProvider theme={theme}>
+                <Container>
+                    <Input placeholder='hello'/>
+                    <Form/>
+                </Container>
+            </ThemeProvider>
+        );
+    }
+}
 
 createGlobalStyle`
     body{
         padding: 0;
         margin: 0;
     }
+`;
+
+const Container = styled.div`
+    height: 100vh;
+    width: 100%;
+    background-color: #bdc3c7;
 `;
 
 const awesomeCard = css`
@@ -20,20 +47,14 @@ const Input = styled("input").attrs({required:true})`
     ${awesomeCard}
 `;
 
-class App extends Component {
-    render() {
-        return (
-            <Container>
-                <Input placeholder='hello'/>
-            </Container>
-        );
-    }
-}
+const Card = styled.div`
+    background-color: red;
+`;
 
-const Container = styled.div`
-    height: 100vh;
-    width: 100%;
-    background-color: #bdc3c7;
+const Button = styled.button`
+    border-radius: 30px;
+    padding: 25px 15px;
+    background-color: ${props => props.theme.successColor};
 `;
 
 export default App;
