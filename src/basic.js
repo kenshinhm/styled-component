@@ -40,10 +40,10 @@ const Button = styled.button`
     }
     background-color: ${props => (props.danger ? "#c0392b": "#2ecc71" )}
     ${props => {
-        if(props.danger){
-            return css`animation: ${rotation} ${props.rotationTime}s linear infinite`;
-        }    
-    }}
+    if(props.danger){
+        return css`animation: ${rotation} ${props.rotationTime}s linear infinite`;
+    }
+}}
 `;
 
 const Anchor = styled(Button.withComponent("a"))`
